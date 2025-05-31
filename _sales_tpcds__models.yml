@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_customer
+    columns:
+    - name: CUSTOMER_SK
+      description: The primary key of the table.
+      tests:
+        - not_null
+        - relationships:
+            to: ref('stg_tpcds__customer')
+            field: CUSTOMER_SK
+  - name: weekly_sales_inventory
+    columns:
+    - name: inv_qty_wk
+      description: >
+        The sum of inventory on hand at the end of week. This value must be zero or greater
+      tests:
+      - not_null
+    - name: low_stock_flg_wk
+      description: >
+        Boolean that checks an items stock level against weeks supply. 
+        Low levels are indicated by true
+      tests:
+        - accepted_values:
+            values: ['True','False']

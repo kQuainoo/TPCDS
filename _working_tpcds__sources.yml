@@ -1,0 +1,6 @@
+sources:
+  - name: dbt_tpcds
+    database: dbt_tpcds
+    schema: working
+    tables:
+      - name: field_eng_data
